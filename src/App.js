@@ -1,7 +1,10 @@
 import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Card from "./components/Card";
 import { Container } from "./components/styles/Container.styled";
 import GlobalStyles from "./components/styles/Global";
+import content from './content';
 
 function App() {
 
@@ -10,7 +13,8 @@ function App() {
       header: '#ebfbff',
       body: '#fff',
       footer: '#003333'
-    }
+    },
+    mobile: '768px',
   }
 
   return (
@@ -18,9 +22,12 @@ function App() {
       <>
         <GlobalStyles />
         <Header />
-          <Container>
-            <h1>Hello World!</h1>
-          </Container>
+        <Container>
+          {content.map((item, index) => (
+            <Card key={index} item={item} />
+          ))}
+        </Container>
+        <Footer />
       </>
     </ThemeProvider>
   );
